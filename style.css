@@ -129,6 +129,26 @@ main {
 	cursor: pointer;
 	transition: background-color 0.3s ease-in-out;
 }
+.range input::-moz-range-thumb {
+	-webkit-appearance: none;
+	height: 3rem;
+	width: 3rem;
+	border-radius: 50%;
+	background: url(./images/icon-slider.svg) no-repeat, var(--slider-background-color);
+	background-position: center;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+}
+.range input::-ms-thumb {
+	-webkit-appearance: none;
+	height: 3rem;
+	width: 3rem;
+	border-radius: 50%;
+	background: url(./images/icon-slider.svg) no-repeat, var(--slider-background-color);
+	background-position: center;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+}
 
 .range input::-webkit-slider-thumb:hover {
 	background: url(./images/icon-slider.svg) no-repeat, var(--slider-background-color-2);
