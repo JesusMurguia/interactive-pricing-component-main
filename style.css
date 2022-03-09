@@ -1,0 +1,265 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+:root {
+	--full-slider-bar-color: hsl(174, 77%, 80%);
+	--slider-background-color: hsl(174, 86%, 45%);
+	--slider-background-color-2: hsl(174, 86%, 40%);
+	--discount-background-color: hsl(14, 92%, 95%);
+	--discount-text-color: hsl(15, 100%, 70%);
+	--cta-text-color: hsl(226, 100%, 87%);
+	--pricing-component-background-color: hsl(0, 0%, 100%);
+	--main-background-color: hsl(230, 100%, 99%);
+	--empty-slider-bar-color: hsl(224, 65%, 95%);
+	--toggle-background-color: hsl(223, 50%, 87%);
+	--text-color: hsl(225, 20%, 60%);
+	--text-and-cta-background-color: hsl(227, 35%, 25%);
+	font-size: 15px;
+	font-family: "Manrope", sans-serif;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	min-height: 100vh;
+	background: url(./images/bg-pattern.svg);
+	background-color: var(--main-background-color);
+	background-repeat: no-repeat;
+	background-position: top;
+	background-size: 100% 50vh;
+}
+
+main {
+	width: min(90%, 40rem);
+}
+
+.info-section {
+	background: url(./images/pattern-circles.svg) no-repeat center;
+	padding-top: 2.1rem;
+	padding-bottom: 2.1rem;
+	margin-bottom: 2rem;
+	margin-top: -2rem;
+	font-size: clamp(0.75rem, 2.5vw, 0.95rem);
+	font-weight: 800;
+
+	color: var(--text-and-cta-background-color);
+	text-align: center;
+}
+
+.info-section p {
+	margin-top: -0.75rem;
+	font-weight: 600;
+	font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+	padding: 0 25%;
+	color: var(--text-color);
+	line-height: 2;
+}
+
+.card {
+	background-color: var(--pricing-component-background-color);
+	border-radius: 0.5em;
+	box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.1);
+	padding: 2em;
+}
+
+.pricing-section {
+	display: grid;
+	grid-template-areas:
+		"pageviews"
+		"range"
+		"price";
+	text-align: center;
+	align-items: center;
+}
+
+.pricing-section .pageviews {
+	grid-area: pageviews;
+	color: var(--text-color);
+	font-weight: 700;
+	font-size: 0.95rem;
+	letter-spacing: 0.05rem;
+	margin: 2rem;
+}
+
+.pricing-section .price {
+	grid-area: price;
+	font-size: 2rem;
+	font-weight: 900;
+	margin: 2rem;
+}
+
+.price > span {
+	font-size: 1rem;
+	color: var(--text-color);
+}
+
+.pricing-section .range {
+	grid-area: range;
+}
+
+.range input {
+	-webkit-appearance: none;
+	width: 100%;
+	height: 0.65rem;
+	background: var(--empty-slider-bar-color);
+	border-radius: 0.25rem;
+	background-image: linear-gradient(var(--full-slider-bar-color), var(--full-slider-bar-color));
+	background-size: 70% 100%;
+	background-repeat: no-repeat;
+}
+
+.range input::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: 3rem;
+	width: 3rem;
+	border-radius: 50%;
+	background: url(./images/icon-slider.svg) no-repeat, var(--slider-background-color);
+	background-position: center;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+}
+
+.range input::-webkit-slider-thumb:hover {
+	background: url(./images/icon-slider.svg) no-repeat, var(--slider-background-color-2);
+	background-position: center;
+}
+
+@media only screen and (min-width: 600px) {
+	.pricing-section {
+		grid-template-areas:
+			"pageviews price"
+			"range range";
+	}
+	.info-section p {
+		padding: 0;
+	}
+}
+
+.period-section {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	margin-left: -1rem;
+	padding-top: 1.5rem;
+	padding-bottom: 0.5rem;
+}
+
+.period-section h4,
+.period-section label {
+	font-weight: 600;
+	font-size: 0.85rem;
+	color: var(--text-color);
+	position: relative;
+}
+
+.period-section > h4:last-child::after {
+	content: "-25%";
+	position: absolute;
+	top: 0;
+	width: max-content;
+	left: 100%;
+	margin-left: 0.5rem;
+	padding: 0.125rem 0.5rem;
+	color: var(--discount-text-color);
+	background: var(--discount-background-color);
+	border-radius: 1rem;
+}
+
+input[type="checkbox"].toggle + label {
+	display: flex;
+	align-items: center;
+	position: relative;
+}
+
+input[type="checkbox"].toggle {
+	opacity: 0;
+	position: absolute;
+	left: -999px;
+	top: -999px;
+}
+
+input[type="checkbox"].toggle + label::before {
+	content: "";
+	width: 3.5rem;
+	height: 1.75rem;
+	background-color: var(--toggle-background-color);
+	border-radius: 1rem;
+	transition: background-color 200ms ease-in-out;
+}
+input[type="checkbox"].toggle:hover + label::before {
+	background-color: var(--slider-background-color);
+	cursor: pointer;
+}
+
+input[type="checkbox"].toggle + label::after {
+	position: absolute;
+	content: "";
+	width: 1.25rem;
+	cursor: pointer;
+	height: 1.25rem;
+	margin-left: 0.25rem;
+	background-color: var(--pricing-component-background-color);
+	border-radius: 1rem;
+	margin-right: 1em;
+	transition: transform 200ms ease-in-out;
+}
+
+input[type="checkbox"].toggle:checked + label::after {
+	transform: translateX(140%);
+}
+
+@media only screen and (min-width: 600px) {
+	.period-section > h4:last-child::after {
+		content: "-25% discount";
+	}
+}
+
+.card-footer {
+	text-align: center;
+	border-top: 1px solid var(--toggle-background-color);
+	margin-right: -2rem;
+	margin-left: -2rem;
+}
+
+.benefits-section {
+	padding: 1rem 0;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.benefits-section p {
+	margin: 0.25rem;
+	font-weight: 600;
+	font-size: 0.85rem;
+	color: var(--text-color);
+}
+
+.benefits-section p > span {
+	content: url(./images/icon-check.svg);
+	width: 1rem;
+	margin-right: 0.75rem;
+}
+
+.btn {
+	background: var(--text-and-cta-background-color);
+	color: var(--cta-text-color);
+	padding: 1rem 3rem;
+	border-radius: 1.5rem;
+	border: none;
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+	cursor: pointer;
+}
+
+.btn:hover {
+	color: var(--main-background-color);
+}
