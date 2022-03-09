@@ -93,6 +93,12 @@ main {
 	margin: 2rem;
 }
 
+.price {
+	font-weight: 900;
+	font-size: 2.5rem !important;
+	color: var(--text-and-cta-background-color);
+}
+
 .price > span {
 	font-size: 1rem;
 	color: var(--text-color);
@@ -145,7 +151,7 @@ main {
 	justify-content: center;
 	align-items: center;
 	gap: 1rem;
-	margin-left: -1rem;
+	margin-left: -3rem;
 	padding-top: 1.5rem;
 	padding-bottom: 0.5rem;
 }
